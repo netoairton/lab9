@@ -61,6 +61,58 @@ namespace edb1{
         }
         return 0;
     }
+    extern "C++" template<typename T>
+    bool buscaTerRe(T V[], int ini, int fim, int x){
+        int esq= ini + (fim - ini) * 1 / 3;
+        int dir= ini + (fim - ini) * 2 / 3;
+        if(fim<ini){
+            return false;
+        }
+        if(V[esq]==x){
+            return true;
+        }
+        if(V[dir]==x){
+            return true;
+        }
+        if(V[esq]>x){
+            return buscaTerRe(V, ini, esq-1, x);
+        }
+        if(V[esq]<x && V[dir]>x){
+            return buscaTerRe(V, esq+1, dir-1, x);
+        }
+        if(V[dir]<x){
+            return buscaTerRe(V, dir+1, fim, x);
+        }
+        return false;
+    }
+    extern "C++" template<typename T>
+    bool buscaTerIt(T V[], int ini, int fim, int x){
+        int mid1, mid2;
+        int esq=ini;
+        int dir= fim;
+        do{
+            mid1= ((dir-esq)/3) + esq;
+            mid2= (( (dir-esq) /3) *2) + esq;
+            if(V[mid1]==x){
+                return true;
+            }
+            if(V[mid2]==x){
+                return true;
+            }
+            if(V[mid1]> x){
+                dir= mid1 -1;
+            }
+            if(V[mid1]< x && V[mid2]>x){
+                dir=mid2 -1;
+                esq=mid1 +1;
+            }
+            else if(V[mid2] <x){
+                esq=mid2 +1;
+            }
+
+        }while(esq<=dir);
+        return false;
+    }
 
 }
 

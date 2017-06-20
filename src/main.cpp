@@ -18,6 +18,8 @@ int main(){
     cout<< buscaSeqRe(vetor, 50, 15)<<endl;
     cout<<buscaBiRe(vetor, 50, 10)<<endl;
     cout<<buscaBiIt(vetor, 50, 37)<<endl;
+    cout<<buscaTerRe(vetor, 0, 50, 7)<<endl;
+    cout<<buscaTerRe(vetor, 0, 50, 50)<<endl;
 
     ///Teste lista///
     Lista<int> lista;
@@ -32,6 +34,7 @@ int main(){
     pilha.push(40);
     pilha.push(9);
 
+    cout<<pilha.pop()<<endl;
     cout<<pilha.pop()<<endl;
 
     return 0;
