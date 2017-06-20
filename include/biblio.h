@@ -128,7 +128,7 @@ namespace edb1{
     extern  "C++" template<typename T>
     void SelectionSort(T V[], int size){
         int least;
-        int tmp;
+        T tmp;
         for(int i=0; i<(size-1); i++){
             least=i;
             for(int jj=(i+1); jj<size; jj++){
@@ -154,7 +154,7 @@ namespace edb1{
     }*/
     extern  "C++" template<typename T>
     void BubbleSort(T V[], int size){
-        int tmp;
+        T tmp;
         bool test;
         do{
             test=0;
@@ -167,6 +167,33 @@ namespace edb1{
                 }
             }
         }while(test);
+    }
+    extern  "C++" template<typename T>
+    void QuickSort(T V[], int inicio, int fim){
+        int l=inicio, r=fim;
+        T tmp;
+        T piv=V[(l+r)/2];
+        while(r>=l){
+            while(V[l]< piv){
+                l++;
+            }
+            while(V[r]>piv){
+                r--;
+            }
+            if(l<=r){
+                tmp=V[l];
+                V[l]=V[r];
+                V[r]=tmp;
+                l++;
+                r--;
+            }
+        }
+        if(inicio<r){
+            QuickSort(V, inicio, r);
+        }
+        if(fim>l){
+            QuickSort(V, l, fim);
+        }
     }
 }
 

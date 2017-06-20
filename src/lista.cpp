@@ -16,3 +16,4 @@ using std::string;
 #include"include/lista.h"
 #include"include/pilha.h"
 #include "include/biblio.h"
+#include"include/fila.h"

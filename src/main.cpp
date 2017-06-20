@@ -3,6 +3,8 @@ using std::cout;
 using std::endl;
 #include<cstdlib>
 #include<ctime>
+#include<string>
+using std::string;
 #include "include/biblio.h"
 #include "include/lista.h"
 #include "include/pilha.h"
@@ -83,6 +85,23 @@ int main(){
         cout<<VET[i]<<" ";
     }
     BubbleSort(VET, 15);
+    cout<<endl
+        <<"Vetor apos ordenacao: "<<endl;
+    for(int i=0; i<15; i++){
+        cout<<VET[i]<<" ";
+    }
+    cout<<endl;
+
+    //Quick
+    cout<<endl;
+    for(int i=0; i<15; i++){
+        VET[i]= rand()%150;
+    }
+    cout<<"Vetor antes: "<<endl;
+    for(int i=0; i<15; i++){
+        cout<<VET[i]<<" ";
+    }
+    QuickSort(VET, 0, 14);
     cout<<endl
         <<"Vetor apos ordenacao: "<<endl;
     for(int i=0; i<15; i++){

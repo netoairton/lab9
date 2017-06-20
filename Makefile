@@ -24,20 +24,20 @@ airtonneto.so: $(SRC_DIR)/lista.cpp $(INC_DIR)/biblio.h $(INC_DIR)/pilha.h $(INC
 	@echo "+++ [Biblioteca dinamica criada em $(LIB_DIR)/$@] +++"
 
 prog_estatico:
-	$(CC) $(CFLAGS) $(SRC_DIR)/main.cpp $(LIB_DIR)/airtonneto.a -o $(OBJ_DIR)/$@
+	$(CC) $(CFLAGS) $(SRC_DIR)/main.cpp $(LIB_DIR)/airtonneto.a -o $(BIN_DIR)/$@
 
 prog_dinamico:
-	$(CC) $(CFLAGS) $(SRC_DIR)/main.cpp $(LIB_DIR)/airtonneto.so -o $(OBJ_DIR)/$@
+	$(CC) $(CFLAGS) $(SRC_DIR)/main.cpp $(LIB_DIR)/airtonneto.so -o $(BIN_DIR)/$@
 
 
 
 #WINDOWS
-airtonneto.lib: $(SRC_DIR)/lista.cpp $(INC_DIR)/biblio.h $(INC_DIR)/pilha.h $(INC_DIR)/lista.h
+airtonneto.lib: $(SRC_DIR)/lista.cpp $(INC_DIR)/biblio.h $(INC_DIR)/pilha.h $(INC_DIR)/lista.h $(INC_DIR)/fila.h
 	$(CC) $(CFLAGS) -c $(SRC_DIR)/lista.cpp -o $(OBJ_DIR)/lista.o
 	$(AR) rcs $(LIB_DIR)/$@ $(OBJ_DIR)/lista.o
 	@echo "+++ [Biblioteca estatica criada em $(LIB_DIR)/$@] +++"
 
-airtonneto.dll: $(SRC_DIR)/lista.cpp $(INC_DIR)/biblio.h $(INC_DIR)/pilha.h $(INC_DIR)/lista.h
+airtonneto.dll: $(SRC_DIR)/lista.cpp $(INC_DIR)/biblio.h $(INC_DIR)/pilha.h $(INC_DIR)/lista.h $(INC_DIR)/fila.h
 	$(CC) $(CFLAGS) -c $(SRC_DIR)/lista.cpp -o $(OBJ_DIR)/lista.o
 	$(CC) -shared -o $(LIB_DIR)/$@ $(OBJ_DIR)/lista.o
 	@echo "+++ [Biblioteca dinamica criada em $(LIB_DIR)/$@] +++"
