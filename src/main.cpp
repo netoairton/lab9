@@ -1,6 +1,8 @@
 #include<iostream>
 using std::cout;
 using std::endl;
+#include<cstdlib>
+#include<ctime>
 #include "include/biblio.h"
 #include "include/lista.h"
 #include "include/pilha.h"
@@ -36,6 +38,56 @@ int main(){
 
     cout<<pilha.pop()<<endl;
     cout<<pilha.pop()<<endl;
+
+    ///Teste Ordenação///
+    srand(time(NULL));
+    int *VET= new int[15];
+    ///Insertion///
+    for(int i=0; i<15; i++){
+        VET[i]= rand()%150;
+    }
+    cout<<"Vetor antes: "<<endl;
+    for(int i=0; i<15; i++){
+        cout<<VET[i]<<" ";
+    }
+    InsertionSort(VET, 15);
+    cout<<endl
+        <<"Vetor apos ordenacao: "<<endl;
+    for(int i=0; i<15; i++){
+        cout<<VET[i]<<" ";
+    }
+    cout<<endl;
+    ///Selection
+    for(int i=0; i<15; i++){
+        VET[i]= rand()%150;
+    }
+    cout<<endl
+        <<"Vetor antes: "<<endl;
+    for(int i=0; i<15; i++){
+        cout<<VET[i]<<" ";
+    }
+    SelectionSort(VET, 15);
+    cout<<endl
+        <<"Vetor apos ordenacao: "<<endl;
+    for(int i=0; i<15; i++){
+        cout<<VET[i]<<" ";
+    }
+    cout<<endl;
+    ///Bubble
+    for(int i=0; i<15; i++){
+        VET[i]= rand()%150;
+    }
+    cout<<endl
+        <<"Vetor antes: "<<endl;
+    for(int i=0; i<15; i++){
+        cout<<VET[i]<<" ";
+    }
+    BubbleSort(VET, 15);
+    cout<<endl
+        <<"Vetor apos ordenacao: "<<endl;
+    for(int i=0; i<15; i++){
+        cout<<VET[i]<<" ";
+    }
 
     return 0;
 }

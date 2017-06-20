@@ -113,7 +113,61 @@ namespace edb1{
         }while(esq<=dir);
         return false;
     }
-
+    extern  "C++" template<typename T>
+    void InsertionSort(T V[], int size){
+        for(int i=0; i<size; i++){
+            int insercao= i;
+            T x= V[i];
+            while(insercao>0 && V[insercao-1]>x){
+                V[insercao]= V[insercao-1];
+                insercao--;
+            }
+            V[insercao]= x;
+        }
+    }
+    extern  "C++" template<typename T>
+    void SelectionSort(T V[], int size){
+        int least;
+        int tmp;
+        for(int i=0; i<(size-1); i++){
+            least=i;
+            for(int jj=(i+1); jj<size; jj++){
+                if(V[jj]<V[least]){
+                    least=jj;
+                }
+            }
+            if(i != least){
+                    tmp= V[i];
+                    V[i]= V[least];
+                    V[least]=tmp;
+            }
+        }
+    }
+    /*extern  "C++" template<typename T>
+    void MergeSort(T V[], int inicio, int fim){
+        if(fim>inicio){
+            int tmp= inicio+ (fim-inicio)/2;
+            MergeSort(V, inicio, tmp);
+            MergeSort(V, (tmp+1), fim);
+            MergeSort(V, )
+        }
+    }*/
+    extern  "C++" template<typename T>
+    void BubbleSort(T V[], int size){
+        int tmp;
+        bool test;
+        do{
+            test=0;
+            for(int ii=0; ii<(size-1); ii++){
+                if(V[ii]> V[ii+1]){
+                    tmp=V[ii];
+                    V[ii]= V[ii+1];
+                    V[ii+1]=tmp;
+                    test=1;
+                }
+            }
+        }while(test);
+    }
 }
 
 
