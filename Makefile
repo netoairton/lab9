@@ -8,9 +8,26 @@ CC      = g++
 CFLAGS  = -Wall -pedantic -std=c++11 -ansi -I. -I$(INC_DIR) -g
 ARCHIVE = ar
 
-#linux: dionisio.a dionisio.so prog_estatico prog_dinamico
+linux: airtonneto.a airtonneto.so prog_estatico prog_dinamico
 
 windows: airtonneto.lib airtonneto.dll prog_estatico.exe prog_dinamico.exe
+
+#LINUX
+airtonneto.a: $(SRC_DIR)/lista.cpp $(INC_DIR)/biblio.h $(INC_DIR)/pilha.h $(INC_DIR)/lista.h
+	$(CC) $(CFLAGS) -c $(SRC_DIR)/lista.cpp -o $(OBJ_DIR)/lista.o
+	$(AR) rcs $(LIB_DIR)/$@ $(OBJ_DIR)/lista.o
+	@echo "+++ [Biblioteca estatica criada em $(LIB_DIR)/$@] +++"
+
+airtonneto.so: $(SRC_DIR)/lista.cpp $(INC_DIR)/biblio.h $(INC_DIR)/pilha.h $(INC_DIR)/lista.h
+	$(CC) $(CFLAGS) -fPIC -c $(SRC_DIR)/lista.cpp -o $(OBJ_DIR)/lista.o
+	$(CC) -shared -fPIC -o $(LIB_DIR)/$@ $(OBJ_DIR)/lista.o
+	@echo "+++ [Biblioteca dinamica criada em $(LIB_DIR)/$@] +++"
+
+prog_estatico:
+	$(CC) $(CFLAGS) $(SRC_DIR)/main.cpp $(LIB_DIR)/airtonneto.a -o $(OBJ_DIR)/$@
+
+prog_dinamico:
+	$(CC) $(CFLAGS) $(SRC_DIR)/main.cpp $(LIB_DIR)/airtonneto.so -o $(OBJ_DIR)/$@
 
 
 
